@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories - BotMarket</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+:root {
+      --primary: #00ff00;
+      --primary-dark: #00cc00;
+      --secondary: #006600;
+      --text-light: #e5e5e5;
+      --text-dark: #e5e5e5;
+      --background: #121212;
+      --card-bg: #1e1e1e;
+      --accent: #00cc66;
+      --shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text-light);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      url('https://source.unsplash.com/random/1200x600/?technology') no-repeat center/cover;
+      color: var(--text-light);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(toright, var(--primary), var(--secondary));
+      color: var(--background);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(toright, var(--primary-dark), var(--secondary));
+    }
+
+    .category-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .category-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      padding: 1rem;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .category-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .category-description {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .category-link {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(toright, var(--primary), var(--secondary));
+      color: var(--background);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+    }
+
+    .category-link:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(toright, var(--primary-dark), var(--secondary));
+    }
+
+    button {
+      background-color: #00FF00;
+      color: #000;
+      /* optional: make text black for contrast */
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00cc00;
+      /* darker green on hover */
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        BotMarket
+      </div>
+      <nav class="nav-links">
+        <a href="main.html">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <h1>Explore Bot Categories</h1>
+      <p>
+        Choose a category below to explore various bots and automation tools.
+      </p>
+    </section>
+
+    <section class="section" id="categoriesPage">
+      <h2 style="text-align:center; color: var(--primary); margin-bottom: 2rem;">Browse by Category</h2>
+      <div class="category-list" id="categoryList">
+        <!-- Categories will be inserted here -->
+        <div class="category-card">
+          <div class="category-name">
+            Bots
+          </div>
+          <div class="category-description">
+            Explore a wide range of multi-device bots for WhatsApp and other platforms.
+          </div>
+          <a href="Bots.html" class="category-link">Explore Bots</a>
+        </div>
+        <div class="category-card">
+          <div class="category-name">
+            My Bot
+          </div>
+          <div class="category-description">
+            My bot !, Xyber MD..It is still under maintainence though
+          </div>
+          <a href="Pair.html" class="category-link">Explore Xyber Md</a>
+        </div>
+        <div class="category-card">
+          <div class="category-name">
+            Hacks
+          </div>
+          <div class="category-description">
+            Reach out some public hacking tool found around the world.
+          </div>
+          <a href="Hack.html" class="category-link">Explore Hacks</a>
+        </div>
+        <div class="category-card">
+          <div class="category-name">
+            APIs
+          </div>
+          <div class="category-description">
+            Find APIs that can help integrate bots and other tools into your applications.
+          </div>
+          <a href="Api.html" class="category-link">Explore APIs</a>
+        </div>
+        <div class="category-card">
+          <div class="category-name">
+            Trending
+          </div>
+          <div class="category-description">
+            Explore the most popular bots and tools that are trending right now.
+          </div>
+          <a href="Trending.html" class="category-link">Explore Trending</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

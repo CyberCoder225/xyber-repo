@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resource Sharing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e5e5e5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #00ff00;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .upload-section {
+      padding: 20px;
+      border: 2px solid #444;
+      border-radius: 10px;
+      background-color: #1e1e1e;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .upload-section label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="file"], input[type="text"], textarea {
+      margin-top: 5px;
+      margin-bottom: 15px;
+      padding: 10px;
+      width: 100%;
+      background-color: #333;
+      color: #e5e5e5;
+      border: 1px solid #444;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .button {
+      background-color: #00ff00;
+      color: #121212;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background-color: #00cc00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Resource Sharing</h1>
+
+    <div class="upload-section">
+      <h2 style="text-align:center;">Upload Resource</h2>
+      <label for="resource-title">Title:</label>
+      <input type="text" id="resource-title" placeholder="Enter title" />
+
+      <label for="resource-description">Description:</label>
+      <textarea id="resource-description" placeholder="Enter description" rows="4"></textarea>
+
+      <label for="resource-file">File:</label>
+      <input type="file" id="resource-file" />
+
+      <button class="button" id="uploadButton">Upload</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('uploadButton').addEventListener('click', function () {
+      const title = document.getElementById('resource-title').value;
+      const description = document.getElementById('resource-description').value;
+      const file = document.getElementById('resource-file').files[0];
+
+      if (title && description && file) {
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('file', file);
+
+        fetch('/api/upload-resource', {
+          method: 'POST',
+          body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            window.location.href = 'Uploads.html?uploaded=true';
+          } else {
+            alert(data.message || 'Upload failed.');
+          }
+        })
+        .catch(() => alert('Error uploading resource.'));
+      } else {
+        alert('Fill all fields.');
+      }
+    });
+  </script>
+</body>
+</html>

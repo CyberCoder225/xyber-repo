@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shared Resources</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #00ff88;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .share-card {
+      background-color: #1c1c1c;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 255, 136, 0.1);
+      padding: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: background 0.3s;
+    }
+
+    .share-card:hover {
+      background-color: #222;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #00ff88;
+      color: #0f0f0f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .share-content {
+      flex: 1;
+    }
+
+    .share-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .share-description {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: #ccc;
+    }
+
+    .share-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .timestamp {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .download-btn {
+      background-color: #00ff88;
+      color: #0f0f0f;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      background-color: #00cc66;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shared Resources</h1>
+    <div id="shareFeed">
+      <!-- Shared uploads will be inserted here -->
+    </div>
+  </div>
+
+  <script>
+    function loadSharedResources() {
+      fetch('/api/resources')
+      .then(res => res.json())
+      .then(data => {
+        const feed = document.getElementById('shareFeed');
+        feed.innerHTML = '';
+
+        if (data.resources.length === 0) {
+          feed.innerHTML = '<p style="text-align:center;">No shared files yet.</p>';
+          return;
+        }
+
+        data.resources.forEach(resource => {
+          const card = document.createElement('div');
+          card.className = 'share-card';
+
+          const initials = resource.title.charAt(0).toUpperCase();
+
+          card.innerHTML = `
+          <div class="avatar">${initials}</div>
+          <div class="share-content">
+          <div class="share-title">${resource.title}</div>
+          <div class="share-description">${resource.description}</div>
+          <div class="share-footer">
+          <div class="timestamp">${new Date(resource.timestamp || Date.now()).toLocaleString()}</div>
+          <a href="/uploads/${resource.fileName}" download>
+          <button class="download-btn">Download</button>
+          </a>
+          </div>
+          </div>
+          `;
+
+          feed.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.error('Failed to load uploads:', err);
+      });
+    }
+
+    loadSharedResources();
+  </script>
+</body>
+</html>

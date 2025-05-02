@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="IMG_20240420_122117.jpg" />
+  <title>CodeX</title>
+  <style>
+    /* Base Layout */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e5e5e5;
+      scroll-behavior: smooth;
+      overflow-y: auto;
+    }
+
+    canvas {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* Header */
+    .header-advanced {
+      background-color: #1e1e1e;
+      padding: 10px 20px;
+      border-bottom: 2px solid #00ff00;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: left;
+      justify-content: space-between;
+    }
+
+    .open-btn {
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: #00ff00;
+      cursor: pointer;
+    }
+
+    .header-container h2 {
+      color: #00ff00;
+      font-weight: bold;
+    }
+
+    /* Navigation */
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      background-color: #1a1a1a;
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #00ff00;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00cc00;
+    }
+
+    /* Drawer Menu */
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: -220px;
+      width: 200px;
+      height: 100%;
+      background-color: #1a1a1a;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      z-index: 10;
+    }
+
+    .drawer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .drawer ul li {
+      padding: 15px;
+      border-bottom: 1px solid #333;
+    }
+
+    .drawer ul li a {
+      color: #e5e5e5;
+      text-decoration: none;
+      display: block;
+    }
+
+    .drawer ul li a:hover {
+      background-color: #333;
+      color: #00ff00;
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #00ff00;
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #00ff00;
+    }
+
+    .footer-content a {
+      color: #00ff00;
+      text-decoration: none;
+    }
+
+    .footer-content a:hover {
+      text-decoration: underline;
+    }
+
+    marquee {
+      margin-top: 10px;
+      color: #00ff00;
+    }
+
+    /* Utility Elements */
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .button {
+      background-color: #00ff00;
+      color: #121212;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 200px;
+      margin: 20px auto;
+      display: block;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #00cc00;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #1e1e1e;
+    }
+
+    .site-title {
+      margin-left: 10px;
+      font-size: 1.5em;
+      color: #00ff00;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrixCanvas"></canvas>
+
+  <!-- Drawer -->
+  <div id="drawer" class="drawer">
+    <h2 class="drawer-title">Xyber Menu</h2>
+    <ul class="drawer-list">
+      <li><a href="Chat2.html">Chat GPT</a></li>
+      <li><a href="Categories.html">Xyber Categories</a></li>
+      <li><a href="Url.html">Music Downloader</a></li>
+      <li><a href="Pair.html">Bot Section</a></li>
+      <li><a href="Upload.html">Upload Resources</a></li>
+      <li><a href="Uploads.html">Shared Resources</a></li>
+    </ul>
+  </div>
+
+</ul>
+</div>
+<header class="header-advanced">
+<div class="header-container">
+<button class="open-btn" onclick="openDrawer()">☰</button>
+<h2 class="site-title"><marquee>CyberCoder</marquee></h2>
+</div>
+</header>
+</header>
+
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="Project.html">Projects</a></li>
+<li><a href="https://github.com/Nyasha2005">GitHub</a></li>
+<li><a href="#">TechTitan</a></li>
+</ul>
+</nav>
+
+<section id="about">
+<h2>About Me</h2>
+<p>
+I'm <strong>Cyber Coder - NY.BMW.WT</strong><br>
+I specialize in <strong>HTML, CSS, and JavaScript</strong> to craft captivating digital experiences that blend creativity and performance.<br>
+I build sleek, responsive websites and intuitive mobile apps using modern tools like <strong>Bootstrap, Flutter, and Firebase</strong>.<br>
+Whether it's a landing page or a full-stack web app, I design with purpose and code with precision.<br>
+Let's explore the art of <strong>web development, UI/UX design, and creative innovation</strong>—together.
+</p>
+</section>
+
+<section id="projects">
+<h2>App Dev</h2>
+<p>
+Passionate about web and mobile app development, I specialize in building responsive user interfaces and intuitive mobile experiences. I leverage modern technologies like HTML5, CSS3, JavaScript, Flutter, and React to create clean, efficient, and engaging applications.
+</p>
+</section>
+
+<footer>
+<div class="footer-content">
+<p>
+&copy; 2025 Nyasha Mabaya. All rights reserved.
+</p>
+<p>
+Crafted with passion in Mutare, Zimbabwe.
+</p>
+<p>
+<a href="mailto:nyasha@example.com">Contact Me</a> |
+<a href="https://wa.me/0718228938">WhatsApp</a>
+</p>
+</div>
+<p>
+<marquee>&copy; 2025 | nyashaM</marquee>
+</p>
+</footer>
+
+<script>
+function openDrawer() {
+const drawer = document.getElementById("drawer");
+drawer.style.left = drawer.style.left === "0px" ? "-220px": "0px";
+}
+
+// Matrix Effect
+const canvas = document.getElementById("matrixCanvas");
+const ctx = canvas.getContext("2d");
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "CyberCoder";
+const fontSize = 17;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function drawMatrix() {
+ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = "#0F0";
+ctx.font = fontSize + "px monospace";
+
+for (let i = 0; i < drops.length; i++) {
+const text = letters.charAt(Math.floor(Math.random() * letters.length));
+ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+drops[i] = 0;
+}
+drops[i]++;
+}
+}
+
+setInterval(drawMatrix, 33);
+
+// Touch Swipe to Close Drawer
+let touchStartX = 0;
+const drawer = document.getElementById("drawer");
+
+drawer.addEventListener("touchstart", (e) => {
+touchStartX = e.touches[0].clientX;
+});
+
+drawer.addEventListener("touchmove", (e) => {
+const touchMoveX = e.touches[0].clientX;
+if (touchStartX - touchMoveX > 50) {
+drawer.style.left = "-220px";
+}
+});
+
+drawer.addEventListener("touchend", () => {
+touchStartX = 0;
+});
+</script>
+</body>
+</html>

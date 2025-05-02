@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CYBER CODER</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease-in-out;
+    }
+
+    body {
+      height: 100vh;
+      background-color: #000;
+      color: #00FF00;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 5px #00FF00;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+    }
+
+    button {
+      background-color: #000;
+      color: #00FF00;
+      border: 2px solid #00FF00;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+      width: 220px;
+      text-shadow: 0 0 5px #00FF00;
+      box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+    }
+
+    button:hover {
+      background-color: #00FF00;
+      color: #000;
+      box-shadow: 0 0 20px #00FF00, 0 0 40px #00FF00;
+      transform: scale(1.05);
+    }
+
+    marquee {
+      position: absolute;
+      top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 0 0 5px #00FF00;
+      width: 100%;
+    }
+
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+  <div class="button-container">
+    <button onclick="window.open('pair2.html')">QR Code</button>
+    <button onclick="window.location.href='pair2.html'">Pair Code</button>
+    <button onclick="window.open('https://github.com/CyberCoder225/XYBER-MD)">Bot Repo</button>
+    <button onclick="window.open('https://wa.me/message/263718228938')">Contact Me</button>
+    <button onclick="window.open('https://chat.whatsapp.com/EseZzgRWQma2f2q6nEByvl')">Wa Group</button>
+    <button onclick="window.open('https://whatsapp.com/channel/0029Vb5emtxGOj9rMAF7251V')">Wa Channel</button>
+  </div>
+
+
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789';
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    const drops = Array.from({
+      length: columns
+    }).fill(1);
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#00FF00';
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+  </script>
+  <footer>
+    <marquee>Bot under development !</marquee>
+  </footer>
+  <footer>
+    <small style="color: red;"> <center><h1>BOT<br>UNDER<br>DEVELOPMENT</h1></center>.C..Y..B..E..R...C..O..D..E..R</small>
+
+  </footer>
+</body>
+</html>

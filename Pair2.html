@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dreaded Pairing</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      height: 100vh;
+      background-color: #000;
+      color: #00FF00;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 5px #00FF00;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px #00FF00;
+    }
+
+    form {
+      background-color: #111;
+      padding: 30px;
+      border: 1px solid #00FF00;
+      box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 300px;
+    }
+
+    label {
+      font-size: 16px;
+      color: #00FF00;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #00FF00;
+      background: #000;
+      color: #00FF00;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #00FF00;
+    }
+
+    button {
+      background-color: #000;
+      color: #00FF00;
+      border: 2px solid #00FF00;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+    }
+
+    button:hover {
+      background-color: #00FF00;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00FF00, 0 0 40px #00FF00;
+    }
+
+    #pairingCode {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+      text-shadow: 0 0 5px #00FF00;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+      text-shadow: 0 0 3px #00FF00;
+    }
+
+    .falling-text {
+      position: fixed;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #00FF00;
+      font-size: 24px;
+      font-family: 'Courier New', monospace;
+      animation: fall5s linear forwards;
+      opacity: 0.8;
+      text-shadow: 0 0 10px #00FF00;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+@keyframes fall {
+      0% {
+        top: -10%;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        top: 110%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>XYBER-MD PAIR</h1>
+    <form action="/requestPairingCode" method="post">
+      <label for="phoneNumber">Phone Number:</label>
+      <input
+      type="text"
+      id="phoneNumber"
+      name="phoneNumber"
+      required
+      placeholder="263718228938"
+      >
+      <button type="submit">Pair Code</button>
+    </form>
+    <div id="pairingCode"></div>
+    <footer>
+      Cyber Coder
+    </footer>
+  </div>
+
+  <script>
+    setInterval(() => {
+      const text = document.createElement('div');
+      text.className = 'falling-text';
+      text.textContent = 'CYBER CODER';
+      text.style.left = Math.random() * 100 + 'vw';
+      text.style.animationDuration = (3 + Math.random() * 2) + 's';
+      document.body.appendChild(text);
+      setTimeout(() => text.remove(), 6000);
+    }, 300);
+  </script>
+</body>
+</html>

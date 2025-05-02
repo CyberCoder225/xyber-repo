@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Downloader</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #e5e5e5;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      color: #00ffcc;
+      font-size: 1.8rem;
+      font-weight: bold;
+      border-bottom: 2px solid #00ffcc;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 500px;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      background-color: #1e1e1e;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 0 10px #00ffcc55;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #00ffcc;
+      color: #121212;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00ddb8;
+    }
+
+    .status {
+      margin-top: 30px;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Xyber-Music Downloader
+  </header>
+
+  <div class="container">
+    <p>
+      Enter a song name, YouTube URL, or music link:
+    </p>
+    <input type="text" id="songInput" placeholder="Paste music URL or title..." />
+    <button onclick="downloadSong()">Download</button>
+    <div class="status" id="statusMessage"></div>
+  </div>
+
+  <footer>
+    &copy; 2025 Cyber Coder | Made in Zimbabwe
+  </footer>
+
+  <script>
+    async function downloadSong() {
+      const input = document.getElementById('songInput').value.trim();
+      const status = document.getElementById('statusMessage');
+
+      if (!input) {
+        status.textContent = 'Please enter a valid song title or URL.';
+        return;
+      }
+
+      status.textContent = 'Downloading... please wait.';
+
+      try {
+        const response = await fetch('/api/download', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            query: input
+          })
+        });
+
+        const data = await response.json();
+        if (data.success && data.url) {
+          const a = document.createElement('a');
+          a.href = data.url;
+          a.download = '';
+          a.click();
+          status.textContent = 'Download started.';
+        } else {
+          status.textContent = data.message || 'Failed to download. Try again.';
+        }
+      } catch (error) {
+        status.textContent = 'An error occurred. Please try again.';
+        console.error(error);
+      }
+    }
+  </script>
+
+</body>
+</html>

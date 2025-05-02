@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trending Hacks - BotMarket</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+:root {
+      --primary: #00ff00;
+      --primary-dark: #00cc00;
+      --secondary: #006600;
+      --text-light: #e5e5e5;
+      --text-dark: #e5e5e5;
+      --background: #121212;
+      --card-bg: #1e1e1e;
+      --accent: #00cc66;
+      --shadow: 0 10px 30px rgba(0, 255, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text-light);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      url('https://source.unsplash.com/random/1200x600/?hacks') no-repeat center/cover;
+      color: var(--text-light);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(toright, var(--primary), var(--secondary));
+      color: var(--background);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(toright, var(--primary-dark), var(--secondary));
+    }
+
+    .hacks-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .hack-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      padding: 1rem;
+    }
+
+    .hack-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .hack-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .hack-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .hack-description {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .hack-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-bottom: 1rem;
+    }
+
+    .load-more-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+@media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        BotMarket
+      </div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="Bots.html">Bots</a>
+        <a href="Game.html">Game</a>
+        <a href="Hacks.html">Hacks</a>
+        <a href="Apis.html">APIs</a>
+        <a href="Trending.html">Trending</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <h1>Trending Hacks</h1>
+      <p>
+        Explore the latest and most popular hacks on GitHub, from security tools to useful utilities.
+      </p>
+    </section>
+
+    <section class="section" id="trendingHacksSection">
+      <h2 style="text-align:center; color: var(--primary); margin-bottom: 2rem;">Trending Hacks</h2>
+      <div class="hacks-list" id="hacksList"></div>
+      <div class="load-more-container">
+        <button class="button" onclick="loadTrendingHacks()">Load More</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let currentPage = 1;
+    const hacksList = document.getElementById('hacksList');
+
+    function loadTrendingHacks() {
+      fetch(`https://api.github.com/search/repositories?q=hack&sort=stars&order=desc&page=${currentPage}&per_page=12`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.items && data.items.length > 0) {
+          data.items.forEach(hack => {
+            const hackCard = document.createElement('div');
+            hackCard.classList.add('hack-card');
+            hackCard.innerHTML = `
+            <img src="${hack.owner.avatar_url}" alt="${hack.name} Image">
+            <div class="hack-name">${hack.name}</div>
+            <div class="hack-description">${hack.description || 'No description available.'}</div>
+            <div class="hack-stats">
+            <span>⭐ ${hack.stargazers_count}</span>
+            <span>🍴 ${hack.forks_count}</span>
+            </div>
+            <a href="${hack.html_url}" target="_blank" class="button">View on GitHub</a>
+            `;
+            hacksList.appendChild(hackCard);
+          });
+          currentPage++;
+        } else {
+          document.querySelector('.load-more-container').style.display = 'none';
+          hacksList.innerHTML += '<p style="text-align:center;">No more hacks found.</p>';
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        hacksList.innerHTML += '<p>Error loading data.</p>';
+      });
+    }
+
+    loadTrendingHacks();
+  </script>
+</body>
+</html>
