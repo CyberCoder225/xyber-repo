@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Access - Choose Your Interface</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Consolas', 'Monaco', 'Lucida Console', 'Courier New', monospace;
+      /* Monospaced font for hacker feel */
+      background-color: #0a0a0a;
+      /* Dark, almost black background */
+      color: #00FF00;
+      /* Default text color to green */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+      /* Optional: Add a subtle scanline effect */
+      /* background-image: linear-gradient(0deg, transparent 50%, rgba(0, 255, 0, 0.05) 50%);
+            background-size: 100% 4px; */
+    }
+
+    .container {
+      background-color: rgba(10, 20, 10, 0.6);
+      /* Dark, semi-transparent green-tinted container */
+      padding: 30px 40px;
+      border: 1px solid #00FF00;
+      /* Green border */
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.3), 0 0 5px rgba(0, 255, 0, 0.5) inset;
+      /* Green glow */
+      max-width: 650px;
+      width: 100%;
+      /* Remove border-radius for a sharper, more blocky look */
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      color: #00FF00;
+      /* Bright green title */
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00;
+      /* Green glow text */
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.1em;
+      color: #9aff9a;
+      /* Lighter green for subheading */
+      margin-bottom: 35px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 1.3em;
+      font-weight: bold;
+      /* Bolder text */
+      border: 2px solid;
+      /* Keep border for definition */
+      padding: 15px 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+      display: inline-block;
+      width: 100%;
+      text-transform: uppercase;
+      /* Uppercase text for buttons */
+      letter-spacing: 1px;
+      /* Remove border-radius for sharp corners */
+      border-radius: 0;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+      /* Slight press effect */
+    }
+
+    /* Cyber Coder Button - Green */
+    .btn-cyber {
+      background-color: transparent;
+      /* Transparent background */
+      color: #00FF00;
+      /* Green text */
+      border-color: #00FF00;
+      /* Green border */
+      box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+    }
+
+    .btn-cyber:hover, .btn-cyber:focus {
+      background-color: #00FF00;
+      /* Green background on hover */
+      color: #0a0a0a;
+      /* Dark text on hover */
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.7), 0 0 25px rgba(0, 255, 0, 0.5);
+      outline: none;
+    }
+
+    /* Tech Titan Button - Red */
+    .btn-tech {
+      background-color: transparent;
+      /* Transparent background */
+      color: #FF0000;
+      /* Red text */
+      border-color: #FF0000;
+      /* Red border */
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+    }
+
+    .btn-tech:hover, .btn-tech:focus {
+      background-color: #FF0000;
+      /* Red background on hover */
+      color: #FFFFFF;
+      /* White text on hover for better contrast with red */
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.5);
+      outline: none;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #008000;
+      /* Darker green for footer */
+    }
+
+    /* Responsive adjustments */
+@media (min-width: 600px) {
+      .button-group {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .btn {
+        width: auto;
+        min-width: 220px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>// SYSTEM ONLINE //</h1>
+      <p>
+        Initiate sequence: select your designation.
+      </p>
+    </header>
+
+    <main>
+      <div class="button-group">
+        <button id="cyberCoderBtn" class="btn btn-cyber">Cyber Coder</button>
+        <button id="techTitanBtn" class="btn btn-tech">Tech Titan</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        &gt; Node active: <span id="currentYear"></span>. All rights reserved by the collective.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('cyberCoderBtn').addEventListener('click', function() {
+      // Optional: Add a little "glitch" or sound effect trigger here before redirect
+      console.log("Accessing Cyber Coder Interface...");
+      window.location.href = 'https://cyber-coder-eight.vercel.app';
+    });
+
+    document.getElementById('techTitanBtn').addEventListener('click', function() {
+      // Optional: Add a little "glitch" or sound effect trigger here before redirect
+      console.log("Engaging Tech Titan Protocol...");
+      window.location.href = 'https://techtitan-jozman.vercel.app';
+    });
+
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Optional: A very simple text "glitch" effect for the title on load
+    const mainTitle = document.querySelector('header h1');
+    const originalTitle = mainTitle.textContent;
+    let glitchInterval;
+
+    function randomChar() {
+      const chars = "!<>-_\\/[]{}—=+*^?#________"; // Cyberpunk-ish characters
+      return chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    function glitchTitle() {
+      let i = 0;
+      glitchInterval = setInterval(() => {
+        mainTitle.textContent = originalTitle.split("").map((char, index) => {
+          if (index < i) {
+            return originalTitle[index];
+          }
+          return Math.random() < 0.8 ? originalTitle[index]: randomChar();
+        }).join("");
+
+        if (i >= originalTitle.length) {
+          clearInterval(glitchInterval);
+          mainTitle.textContent = originalTitle;
+        }
+        i += 0.5; // Slower reveal
+      },
+        60);
+    }
+
+    // Trigger glitch on load or after a slight delay
+    // setTimeout(glitchTitle, 200); // Uncomment to enable glitch effect
+
+  </script>
+</body>
+</html>
